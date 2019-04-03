@@ -68,7 +68,7 @@ go to  [Soumith’s ganhacks repo.](https://github.com/soumith/ganhacks)
 * Model 2: change sigmoid at generator to tanh
 <img width="700" height="300" src="./results/tanh/499.png"></img>
 
-* Others: I tried soft labels, leakyReLU on both discriminator and generator, they both diverge (or collapse maybe) after somwhere before 500 epochs. For models without the discriminator, we will have a generator with trivial results. Also, I didn't really observe the convergence, after 500 epochs, the loss of discriminator (real + fake) begins to be lower than 1.
+* Others: I tried soft labels, leakyReLU on both discriminator and generator, they both diverge (or collapse maybe) after somwhere before 500 epochs. For models without the discriminator, we will have a generator with trivial results. Also, I didn't really observe the convergence for all models, after 500 epochs, the loss of discriminator (real + fake) begins to be lower than 1.
 
 ### Acknowledgements
 
