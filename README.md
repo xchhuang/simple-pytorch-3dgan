@@ -62,13 +62,13 @@ go to  [Soumith’s ganhacks repo.](https://github.com/soumith/ganhacks)
 * Model 0: basic parameter setting
 <img width="700" height="300" src="./results/norm/499.png"></img>
 
-* Model 1: change normal(0, 0.33) to uniform(0, 1) for sampling latent z vector
+* Model 1: change normal(0, 0.33) to uniform(0, 1) for sampling latent z vector based on Model 0
 <img width="700" height="300" src="./results/uniform/499.png"></img>
 
-* Model 2: change sigmoid at generator to tanh
+* Model 2: change sigmoid at generator to tanh based on Model 0
 <img width="700" height="300" src="./results/tanh/499.png"></img>
 
-* Others: I tried soft labels / leakyReLU on both discriminator and generator, they both diverge (or collapse maybe) after somwhere before 500 epochs. For models without the discriminator, we will have a generator with trivial results. Also, I didn't really observe the convergence for all models, after 500 epochs, the loss of discriminator (real + fake) begins to be lower than 1.
+* Others: I tried soft labels / leakyReLU on both discriminator and generator based on Model 0, they both diverge (or collapse maybe) after somwhere before 500 epochs. For models without the discriminator, we will have a generator with trivial results. Also, I didn't really observe the convergence for all models, after 500 epochs, the loss of discriminator (real + fake) begins to be lower than 1.
 
 ### Acknowledgements
 
