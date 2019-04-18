@@ -9,8 +9,11 @@ Some utility functions
 import scipy.ndimage as nd
 import scipy.io as io
 import matplotlib
-# Force matplotlib to not use any Xwindows backend.
-matplotlib.use('Agg')
+import params
+
+if params.device.type != 'cpu':
+    matplotlib.use('Agg')
+
 import matplotlib.pyplot as plt
 import skimage.measure as sk
 from mpl_toolkits import mplot3d
@@ -21,7 +24,7 @@ from torch.autograd import Variable
 import torch
 import os
 import pickle
-import params
+
 
 
 def getVoxelFromMat(path, cube_len=64):
@@ -81,7 +84,8 @@ class ShapeNetDataset(data.Dataset):
         # print (len(self.listdir)) # 10668
 
         data_size = len(self.listdir)
-        self.listdir = self.listdir[0:int(data_size*0.7)]
+#        self.listdir = self.listdir[0:int(data_size*0.7)]
+        self.listdir = self.listdir[0:int(data_size)]
         
         print ('data_size =', len(self.listdir)) # train: 10668-1000=9668
         self.args = args
@@ -101,7 +105,7 @@ def generateZ(args, batch):
     if params.z_dis == "norm":
         Z = torch.Tensor(batch, params.z_dim).normal_(0, 0.33).to(params.device)
     elif params.z_dis == "uni":
-        Z = torch.randn(batch, params.z_dim).to(params.device)
+        Z = torch.randn(batch, params.z_dim).to(params.device).to(params.device)
     else:
         print("z_dist is not normal or uniform")
 
