@@ -1,4 +1,4 @@
-# A Simple 3D-GAN Implementation using PyTorch
+# Simple 3D-GAN-PyTorch
 
 <!-- [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/meetshah1995/tf-3dgan/blob/master/LICENSE)
 [![arXiv Tag](https://img.shields.io/badge/arXiv-1610.07584-brightgreen.svg)](https://arxiv.org/abs/1610.07584)
