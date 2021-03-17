@@ -56,7 +56,11 @@ def trainer(args):
     # for using tensorboard
     if args.logs:
         model_uid = datetime.datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
-        writer = SummaryWriter(params.output_dir+'/'+args.model_name+'/logs_'+model_uid+'_'+args.logs+'/')
+        writer = SummaryWriter(params.output_dir+'/'+args.model_name+'/'+model_uid+'_'+args.logs+'/logs')
+
+        image_saved_path = params.output_dir + '/' + args.model_name + '/' + model_uid + '_' + args.logs + '/images'
+        if not os.path.exists(image_saved_path):
+            os.makedirs(image_saved_path)
 
     # datset define
     # dsets_path = args.input_dir + args.data_dir + "train/"
@@ -94,8 +98,9 @@ def trainer(args):
     G.to(params.device)
     
 
-    # criterion_D = nn.BCELoss()
-    criterion_D = nn.MSELoss()
+    criterion_D = nn.BCELoss()
+    # criterion_D = nn.MSELoss()
+
     criterion_G = nn.L1Loss()
 
     itr_val = -1
@@ -243,9 +248,6 @@ def trainer(args):
                 samples = fake.cpu().data[:8].squeeze().numpy()
                 # print (samples.shape)
                 # image_saved_path = '../images'
-                image_saved_path = params.images_dir
-                if not os.path.exists(image_saved_path):
-                    os.makedirs(image_saved_path)
 
                 SavePloat_Voxels(samples, image_saved_path, epoch)
                 

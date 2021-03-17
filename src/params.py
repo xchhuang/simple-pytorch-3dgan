@@ -15,7 +15,7 @@ adv_weight = 0
 d_thresh = 0.8
 z_dim = 200
 z_dis = "norm"
-model_save_step = 5
+model_save_step = 1
 g_lr = 0.0025
 d_lr = 0.00001
 beta = (0.5, 0.999)
@@ -27,7 +27,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 data_dir = '../volumetric_data/'
 model_dir = 'chair/'    # change it to train on other data models
 output_dir = '../outputs'
-images_dir = '../images'
+# images_dir = '../images'
 
 def print_params():
     l = 16
