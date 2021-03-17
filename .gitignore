@@ -13,6 +13,9 @@ tests/*
 results
 results/*
 */results/*
+outputs
+outputs/*
+*/outputs/*
 results_final
 results_final/*
 */results_final/*
