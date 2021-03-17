@@ -67,7 +67,7 @@ def SavePloat_Voxels(voxels, path, iteration):
         ax.scatter(x, y, z, zdir='z', c='red')
         ax.set_xticklabels([])
         ax.set_yticklabels([])
-        ax.set_aspect('equal')
+        # ax.set_aspect('equal')
     # print (path + '/{}.png'.format(str(iteration).zfill(3)))
     plt.savefig(path + '/{}.png'.format(str(iteration).zfill(3)), bbox_inches='tight')
     plt.close()
