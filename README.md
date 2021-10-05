@@ -9,7 +9,7 @@
 * This is a very simple-to-use pytorch implementation of part of the [paper](https://arxiv.org/abs/1610.07584) "Learning a Probabilistic Latent Space of Object Shapes via 3D Generative-Adversarial Modeling". I provide the complete pipeline of loading dataset, training, evaluation and visualization here and also I would share some results based on different parameter settings.
 
 ## Updates
-* 17 March, 2021: added gitignore; remove some unrelated files; update prerequisites to python 3.7.9 and pytorch 1.6.0; fixed mplot3d; using BCELoss
+* 17 March, 2021: added gitignore, removed some unrelated files, updated prerequisites to python 3.7.9 + pytorch 1.6.0, fixed mplot3d
 
 ### Prerequisites
 
