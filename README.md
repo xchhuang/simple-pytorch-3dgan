@@ -9,7 +9,7 @@
 * This is a very simple-to-use pytorch implementation of part of the [paper](https://arxiv.org/abs/1610.07584) "Learning a Probabilistic Latent Space of Object Shapes via 3D Generative-Adversarial Modeling". I provide the complete pipeline of loading dataset, training, evaluation and visualization here and also I would share some results based on different parameter settings.
 
 ## Updates
-* 12 October, 2021: Code refactored, update readme and provided a pretrained model.
+* 12 October, 2021: Refactored code, updated readme and provided a pretrained model.
 * 17 March, 2021: Added gitignore, removed some unrelated files, updated prerequisites to python 3.7.9 + pytorch 1.6.0, fixed mplot3d.
 
 ### Prerequisites
@@ -25,7 +25,9 @@
 Basically I already put the `chair` dataset and a trained model as an example in `volumetric_data` and `outputs` folders. You can directly go to the training or evaluation part. But I still give a complete pipeline here.
 
 #### Data
-* First, click [here](http://3dshapenets.cs.princeton.edu/3DShapeNetsCode.zip) to download the dataset. Then unzip it and put the `volumetric_data` folder to the path of our main repository. As we use ModelNet instead of ShapeNet here, the results may be inconsistent with the paper.
+
+[comment]: <> (* First, click [here]&#40;http://3dshapenets.cs.princeton.edu/3DShapeNetsCode.zip&#41; to download the dataset. Then unzip it and put the `volumetric_data` folder to the path of our main repository. As we use ModelNet instead of ShapeNet here, the results may be inconsistent with the paper.)
+* We provide the chair dataset in `volumetric_data` folder from [ModelNet](http://3dshapenets.cs.princeton.edu/3DShapeNetsCode.zip). As we use ModelNet instead of ShapeNet here, the results may be inconsistent with the paper.
 
 #### Training
 * Then `cd src`, simply run `python main.py` on GPU or CPU. Of course, you need a GPU for training until getting good results. I used one GeForce GTX 1070 in my experiments on 3D models with resolution of 32x32x32. The maximum number of channels of feature map is 256. Because of these, the results may be inconsistent with the paper. You may need a stronger one for higher resolution one 64x64x64 and 512 feature maps. 
