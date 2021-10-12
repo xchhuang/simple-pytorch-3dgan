@@ -1,5 +1,3 @@
-
-
 '''
 main.py
 
@@ -13,6 +11,7 @@ import torch
 from tester import tester
 import params
 
+
 def str2bool(v):
     if v.lower() in ('yes', 'true', 't', 'y', '1'):
         return True
@@ -21,13 +20,13 @@ def str2bool(v):
     else:
         raise argparse.ArgumentTypeError('Boolean value expected.')
 
-def main():
 
+def main():
     # add arguments
     parser = argparse.ArgumentParser()
 
     # loggings parameters
-    parser.add_argument('--logs', type=str, default=None, help='logs by tensorboardX')
+    parser.add_argument('--logs', type=str, default='first_test', help='logs by tensorboardX')
     parser.add_argument('--local_test', type=str2bool, default=False, help='local test verbose')
     parser.add_argument('--model_name', type=str, default="dcgan", help='model name for saving')
     parser.add_argument('--test', type=str2bool, default=False, help='call tester.py')
@@ -38,7 +37,7 @@ def main():
     params.print_params()
 
     # run program
-    if args.test == False:
+    if not args.test:
         trainer(args)
     else:
         tester(args)
@@ -46,5 +45,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-    

@@ -9,7 +9,8 @@
 * This is a very simple-to-use pytorch implementation of part of the [paper](https://arxiv.org/abs/1610.07584) "Learning a Probabilistic Latent Space of Object Shapes via 3D Generative-Adversarial Modeling". I provide the complete pipeline of loading dataset, training, evaluation and visualization here and also I would share some results based on different parameter settings.
 
 ## Updates
-* 17 March, 2021: added gitignore, removed some unrelated files, updated prerequisites to python 3.7.9 + pytorch 1.6.0, fixed mplot3d
+* 12 October, 2021: Code refactored, update readme and provided a pretrained model.
+* 17 March, 2021: Added gitignore, removed some unrelated files, updated prerequisites to python 3.7.9 + pytorch 1.6.0, fixed mplot3d.
 
 ### Prerequisites
 
@@ -29,15 +30,17 @@ Basically I already put the `chair` dataset and a trained model as an example in
 #### Training
 * Then `cd src`, simply run `python main.py` on GPU or CPU. Of course, you need a GPU for training until getting good results. I used one GeForce GTX 1070 in my experiments on 3D models with resolution of 32x32x32. The maximum number of channels of feature map is 256. Because of these, the results may be inconsistent with the paper. You may need a stronger one for higher resolution one 64x64x64 and 512 feature maps. 
 
-* Other arguments could be used, for example, `python main.py --logs=<SOMETHING_YOU_WANT_TO_LOG>` would start the tensorboardX for logging to `outputs` folder. For local debugging, you can run `python main.py --local_test=True`.
+[comment]: <> (* Other arguments could be used, for example, `python main.py --logs=<SOMETHING_YOU_WANT_TO_LOG>` would start the tensorboardX for logging to `outputs` folder. For local debugging, you can run `python main.py --local_test=True`.)
 
-* During training, model weights and some 3D reconstruction images would be also logged to the `outputs`, `images` folders, respectively, for every `model_save_step` number of step in `params.py`. You can play with all parameters in `params.py`.
+* During training, model weights and some 3D reconstruction images would be also logged to the `outputs` folders, respectively, for every `model_save_step` number of step in `params.py`. You can play with all parameters in `params.py`.
 
 #### Evaluation
 * For evaluation for trained model, you can run `python main.py --test=True` to call `tester.py`.
 * If you want to visualize using visdom, first run `python -m visdom.server`, then `python main.py --test=True --use_visdom=True`.
-* For more results, see the following or the `results` folder.
+* We provide some sample results in the following and in the `sample_results` folder.
 
+#### Pretrained Model
+* We provide a pretrained model [here](https://drive.google.com/file/d/1QNb1NRJe8fi2QsnnQ6XjIUmSDe95surY/view?usp=sharing). Download, unzip and put it into the `outputs` folder. Then run `python main.py --test=True --model_name=dcgan_pretrained`. You will find the outputs in the `test_outputs` folder within `dcgan_pretrained`.
 <!-- 
 ### GAN Trick
 I use some more trick for better result
@@ -59,18 +62,18 @@ go to  [Soumith’s ganhacks repo.](https://github.com/soumith/ganhacks)
 
 
 
-### Results
+### Sample Results
 
 * I trained all models in the following for 500 epochs and save the last model weights. Some random samples are shown at the last epoch.
 
 * Model 0: basic parameter setting
-<img width="700" height="300" src="./results/norm/499.png"></img>
+<img width="700" height="300" src="./sample_results/norm/499.png"></img>
 
 * Model 1: change normal(0, 0.33) to uniform(0, 1) for sampling latent z vector based on Model 0
-<img width="700" height="300" src="./results/uniform/499.png"></img>
+<img width="700" height="300" src="./sample_results/uniform/499.png"></img>
 
 * Model 2: change sigmoid at generator to tanh based on Model 0
-<img width="700" height="300" src="./results/tanh/499.png"></img>
+<img width="700" height="300" src="./sample_results/tanh/499.png"></img>
 
 * Others: I tried soft labels / leakyReLU on both discriminator and generator based on Model 0, they both diverge (or collapse maybe) after somwhere before 500 epochs. For models without the discriminator, we will have a generator with trivial results. Also, I didn't really observe the convergence for all models, after 500 epochs, the loss of discriminator (real + fake) begins to be lower than 1.
 
